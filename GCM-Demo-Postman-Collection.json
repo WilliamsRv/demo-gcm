@@ -1,0 +1,88 @@
+{
+  "info": {
+    "_postman_id": "gcm-demo-team4",
+    "name": "GCM Demo - TEAM 4",
+    "description": "Collection for AES-GCM encryption/decryption demo",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Get Info",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/api/gcm/info",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["api", "gcm", "info"]
+        },
+        "description": "Obtiene información del algoritmo AES-GCM"
+      },
+      "response": []
+    },
+    {
+      "name": "Encrypt",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"plaintext\": \"Mensaje secreto para cifrar\",\n  \"associatedData\": \"user:12345|timestamp:2024-01-01\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:8080/api/gcm/encrypt",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["api", "gcm", "encrypt"]
+        },
+        "description": "Cifra un mensaje usando AES-256-GCM"
+      },
+      "response": []
+    },
+    {
+      "name": "Decrypt",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"encryptedData\": \"{{encryptedData}}\",\n  \"key\": \"{{key}}\",\n  \"associatedData\": \"user:12345|timestamp:2024-01-01\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:8080/api/gcm/decrypt",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["api", "gcm", "decrypt"]
+        },
+        "description": "Descifra un mensaje previamente cifrado"
+      },
+      "response": []
+    }
+  ],
+  "variable": [
+    {
+      "key": "encryptedData",
+      "value": "",
+      "type": "string"
+    },
+    {
+      "key": "key",
+      "value": "",
+      "type": "string"
+    }
+  ]
+}
